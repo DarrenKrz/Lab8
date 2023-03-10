@@ -29,8 +29,8 @@ public class CustomList extends ArrayAdapter<City> {
 
         View view = convertView;
 
-        if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.content, parent,false);
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.content, parent, false);
         }
 
         City city = cities.get(position);
@@ -45,22 +45,27 @@ public class CustomList extends ArrayAdapter<City> {
 
     }
 
-    public int getCount(){
+    public int getCount() {
         return cities.size();
     }
 
-    public void addCity(City city){
+    public void addCity(City city) {
         cities.add(city);
     }
 
     public boolean hasCity(City city) {
         if (cities.contains(city)) {
             return true;
-        } else { return false; }
+        } else {
+            return false;
+        }
     }
 
     public void delete(City city) {
-
+        if (cities.contains(city)) {
+            cities.remove(city);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
-
 }
